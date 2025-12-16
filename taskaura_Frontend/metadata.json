@@ -1,0 +1,5 @@
+{
+  "name": "TaskAura",
+  "description": "A sleek, modern task management application with internationalization and dark mode support.",
+  "requestFramePermissions": []
+}
