@@ -16,6 +16,7 @@ import {
   AlertCircle,
   Pencil,
 } from "lucide-react";
+import { DeleteConfirmationModal } from "../components/dashboard/DeleteConfirmationModal";
 
 export const ProjectDetail: React.FC = () => {
   const { t } = useTranslation();
@@ -48,6 +49,10 @@ export const ProjectDetail: React.FC = () => {
     setSortOrder,
     searchTerm,
     setSearchTerm,
+    taskToDelete,
+    handleCloseDeleteModal,
+    confirmDeleteTask,
+    isDeletingTask,
   } = useProjectDetail();
 
   // Loading state
@@ -444,6 +449,15 @@ export const ProjectDetail: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Task Deletion Modal */}
+      <DeleteConfirmationModal
+        isOpen={taskToDelete !== null}
+        isDeleting={isDeletingTask}
+        onCancel={handleCloseDeleteModal}
+        onConfirm={confirmDeleteTask}
+        itemType="task"
+      />
     </div>
   );
 };

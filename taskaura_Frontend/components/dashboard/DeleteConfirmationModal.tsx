@@ -9,14 +9,34 @@ interface DeleteConfirmationModalProps {
   isDeleting: boolean;
   onCancel: () => void;
   onConfirm: () => void;
+  title?: string;
+  message?: string;
+  itemType?: "project" | "task"; // Optional helper for default texts
 }
 
 export const DeleteConfirmationModal: React.FC<
   DeleteConfirmationModalProps
-> = ({ isOpen, isDeleting, onCancel, onConfirm }) => {
+> = ({ 
+  isOpen, 
+  isDeleting, 
+  onCancel, 
+  onConfirm,
+  title,
+  message,
+  itemType = "project" 
+}) => {
   const { t } = useTranslation();
 
   if (!isOpen) return null;
+
+  // Default texts based on itemType
+  const defaultTitle = itemType === "project" ? "Delete Project" : "Delete Task";
+  const defaultMessage = itemType === "project" 
+    ? "Are you sure you want to delete this project? This action cannot be undone and will permanently remove all associated tasks and data."
+    : "Are you sure you want to delete this task? This action cannot be undone.";
+
+  const displayTitle = title || defaultTitle;
+  const displayMessage = message || defaultMessage;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -29,13 +49,11 @@ export const DeleteConfirmationModal: React.FC<
           <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-xl">
             <AlertTriangle size={24} />
           </div>
-          <h2 className="text-2xl font-bold">Delete Project</h2>
+          <h2 className="text-2xl font-bold">{displayTitle}</h2>
         </div>
 
         <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed">
-          Are you sure you want to delete this project? This action{" "}
-          <span className="font-bold text-red-500">cannot be undone</span> and
-          will permanently remove all associated tasks and data.
+          {displayMessage}
         </p>
 
         <div className="flex justify-end gap-3">
@@ -53,7 +71,7 @@ export const DeleteConfirmationModal: React.FC<
             onClick={onConfirm}
             isLoading={isDeleting}
           >
-            Delete Project
+            {displayTitle}
           </Button>
         </div>
       </div>

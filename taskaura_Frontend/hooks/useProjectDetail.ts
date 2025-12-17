@@ -13,6 +13,7 @@ export const useProjectDetail = () => {
   const queryClient = useQueryClient();
   
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+  const [taskToDelete, setTaskToDelete] = useState<number | null>(null);
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const [newTask, setNewTask] = useState<TaskCreateRequest>({
     title: "",
@@ -113,7 +114,10 @@ export const useProjectDetail = () => {
     mutationFn: async (taskId: number) => {
       await api.delete(`/tasks/${taskId}`);
     },
-    onSuccess: refreshData,
+    onSuccess: () => {
+      refreshData();
+      handleCloseDeleteModal();
+    },
   });
 
   const createTaskMutation = useMutation({
@@ -219,8 +223,22 @@ export const useProjectDetail = () => {
     toggleTaskMutation.mutate(task);
   };
 
+  const handleOpenDeleteTask = (taskId: number) => {
+    setTaskToDelete(taskId);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setTaskToDelete(null);
+  };
+
+  const confirmDeleteTask = () => {
+    if (taskToDelete) {
+      deleteTaskMutation.mutate(taskToDelete);
+    }
+  };
+
   const handleDeleteTask = (taskId: number) => {
-    deleteTaskMutation.mutate(taskId);
+     handleOpenDeleteTask(taskId);
   };
 
 
@@ -242,6 +260,10 @@ export const useProjectDetail = () => {
     isLoading: isProjectLoading || isTasksLoading,
     isTogglingTask: toggleTaskMutation.isPending,
     isDeletingTask: deleteTaskMutation.isPending,
+    taskToDelete,
+    handleOpenDeleteTask,
+    handleCloseDeleteModal,
+    confirmDeleteTask,
     isCreatingTask: createTaskMutation.isPending,
     isUpdatingTask: editTaskMutation.isPending,
 

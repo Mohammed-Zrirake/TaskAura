@@ -154,6 +154,7 @@ export const Dashboard: React.FC = () => {
         isDeleting={isDeleting}
         onCancel={handleCancelDelete}
         onConfirm={confirmDelete}
+        itemType="project"
       />
     </div>
   );
