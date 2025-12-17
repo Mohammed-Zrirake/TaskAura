@@ -42,6 +42,15 @@ Taskaura is a complete full-stack application for managing projects and their as
 > 1.  Navigate to `taskaura_backend/src/main/java/com/taskaura/config/DataSeeder.java`.
 > 2.  **Uncomment** the entire file 
 > 3.  Restart the backend server. The database will be automatically populated with sample data generated using **JavaFaker**.
+>
+> **Finding Login Credentials:**
+> To access the application with the seeded data:
+> 1.  Go to your **Neon Console**.
+> 2.  Navigate to your project and select the **Tables** tab.
+> 3.  Click on the `users` table.
+> 4.  Copy an `email` address from any user for login.
+> 5.  The default password for all seeded users is `password`.
+> *Alternatively, you can simply Sign Up with a new account.*
 
 ## Technologies
 
