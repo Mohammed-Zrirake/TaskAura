@@ -83,6 +83,33 @@ Taskaura is a complete full-stack application for managing projects and their as
 *   **Recharts** for charts
 *   **i18next** for internationalization
 
+## Testing
+
+I have implemented a robust unit testing strategy to ensure the reliability of both the frontend and backend.
+
+### Frontend Testing
+*   **Frameworks:** **Vitest** (Test Runner) and **Happy-DOM** (Environment).
+*   **Libraries:** **React Testing Library** for component testing.
+*   **Scope:**
+    *   **Unit Tests:** Verified shared UI components (e.g., `Button`) and complex interactive components (e.g., `DeleteConfirmationModal`).
+    *   **Coverage:** Ensures correct rendering, event handling, and conditional display logic.
+*   **Running Tests:**
+    ```sh
+    cd taskaura_Frontend
+    npm test
+    ```
+
+### Backend Testing
+*   **Frameworks:** **JUnit 5** (Test Framework) and **Mockito** (Mocking).
+*   **Scope:**
+    *   **Service Layer:** Isolated unit tests for business logic (e.g., `ProjectService`).
+    *   **Mocking:** Repositories and external dependencies are mocked to test logic in isolation without database connectivity.
+*   **Running Tests:**
+    ```sh
+    cd taskaura_backend
+    ./mvnw test
+    ```
+
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
