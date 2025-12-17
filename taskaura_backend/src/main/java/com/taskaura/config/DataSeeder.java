@@ -46,9 +46,9 @@
 //        List<String> taskVerbs = Arrays.asList("Implement", "Test", "Review", "Design", "Deploy", "Research", "Finalize");
 //        List<String> taskNouns = Arrays.asList("user authentication", "database schema", "the landing page", "performance metrics", "the API documentation", "user feedback");
 //
-//        // --- 1. CREATE 10 USERS ---
+//   
 //        List<User> users = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
+//        for (int i = 0; i < 3; i++) {
 //            String firstName = faker.name().firstName();
 //            String lastName = faker.name().lastName();
 //            String email = String.format("%s.%s@taskaura.com", firstName.toLowerCase(), lastName.toLowerCase());
@@ -65,9 +65,9 @@
 //        userRepository.saveAll(users);
 //        System.out.println("Seeded " + users.size() + " users.");
 //
-//        // --- 2. FOR EACH USER, CREATE 30 PROJECTS WITH 6 TASKS ---
+//  
 //        for (User user : users) {
-//            for (int i = 0; i < 30; i++) {
+//            for (int i = 0; i < 3; i++) {
 //                Project project = new Project();
 //                project.setUser(user);
 //
@@ -80,7 +80,7 @@
 //                project.setDescription(faker.lorem().paragraph(2));
 //
 //                List<Task> tasks = new ArrayList<>();
-//                for (int j = 0; j < 6; j++) {
+//                for (int j = 0; j < 2; j++) {
 //                    Task task = new Task();
 //                    task.setProject(project);
 //
@@ -101,6 +101,6 @@
 //                projectRepository.save(project);
 //            }
 //        }
-//        System.out.println("Seeded 300 projects and 1800 tasks.");
+//        System.out.println("Seed Successed!");
 //    }
 //}

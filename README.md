@@ -35,6 +35,14 @@ Taskaura is a complete full-stack application for managing projects and their as
 *   **Responsive Design:** Flawless experience across desktop, tablet, and mobile.
 *   **Interactive Feedback:** Loading states, error handling, and confirmation modals.
 
+> [!NOTE]
+> **NB: Data Population**
+> By default, the application connects to an empty database. If you want to test the app with pre-populated data (users, projects, tasks), I have included a seeding script.
+> 
+> 1.  Navigate to `taskaura_backend/src/main/java/com/taskaura/config/DataSeeder.java`.
+> 2.  **Uncomment** the entire file 
+> 3.  Restart the backend server. The database will be automatically populated with sample data generated using **JavaFaker**.
+
 ## Technologies
 
 ### Backend
