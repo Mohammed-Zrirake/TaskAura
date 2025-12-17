@@ -96,7 +96,7 @@ I have implemented a robust unit testing strategy to ensure the reliability of b
 *   **Running Tests:**
     ```sh
     cd taskaura_Frontend
-    npm test
+    npm run test --run
     ```
 
 ### Backend Testing
